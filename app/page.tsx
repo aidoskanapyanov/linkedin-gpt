@@ -1,15 +1,9 @@
-import IntroducingTag from "@/components/hero/introducing-tag";
-import Subtitle from "@/components/hero/subtitle";
-import Title from "@/components/hero/title";
+import Hero from "@/components/hero/hero";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start py-32">
-      <div className="pb-8">
-        <IntroducingTag />
-      </div>
-      <Title />
-      <Subtitle />
+    <div className="min-h-screen py-32">
+      <Hero />
     </div>
   );
 }

@@ -34,7 +34,7 @@ export default function RootLayout({
         <body className={cx(clash.variable, inter.variable)}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
