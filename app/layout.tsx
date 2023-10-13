@@ -1,3 +1,4 @@
+import BackgroundGradient from "@/components/background-gradient";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
 import cx from "classnames";
@@ -36,6 +37,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <BackgroundGradient />
             {children}
           </ThemeProvider>
         </body>
