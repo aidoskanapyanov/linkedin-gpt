@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" suppressHydrationWarning className="overflow-y-scroll">
         <head />
         <body className={cx(clash.variable, inter.variable)}>
           <ThemeProvider
