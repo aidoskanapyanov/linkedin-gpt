@@ -1,4 +1,5 @@
 import BackgroundGradient from "@/components/shared/background-gradient";
+import Nav from "@/components/shared/nav";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import "@/styles/globals.css";
 import cx from "classnames";
@@ -37,6 +38,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Nav />
             <BackgroundGradient />
             {children}
           </ThemeProvider>
