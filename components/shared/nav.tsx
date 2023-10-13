@@ -1,4 +1,6 @@
 import { ChatGPT, Github, Linkedin } from "@/components/shared/icons";
+import SignInBtn from "@/components/shared/sign-in-btn";
+import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
 const Nav = () => {
@@ -12,7 +14,7 @@ const Nav = () => {
           <span className="font-display ml-2 text-2xl">LinkedinGPT</span>
         </div>
         <div>
-          <Github className="h-8 w-8" />
+          <SignInBtn />
         </div>
       </div>
     </div>
