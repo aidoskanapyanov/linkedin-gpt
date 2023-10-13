@@ -1,10 +1,19 @@
 import { ThemeProvider } from "@/components/theme-provider";
-
+import "@/styles/globals.css";
+import cx from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const clash = localFont({
+  src: "../styles/ClashDisplay-Semibold.otf",
+  variable: "--font-clash",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +29,7 @@ export default function RootLayout({
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body>
+        <body className={cx(clash.variable, inter.variable)}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
