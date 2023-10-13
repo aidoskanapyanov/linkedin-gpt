@@ -1,5 +1,5 @@
-import BackgroundGradient from "@/components/background-gradient";
-import { ThemeProvider } from "@/components/theme-provider";
+import BackgroundGradient from "@/components/shared/background-gradient";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 import "@/styles/globals.css";
 import cx from "classnames";
 import type { Metadata } from "next";
