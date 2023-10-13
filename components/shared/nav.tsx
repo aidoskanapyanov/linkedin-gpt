@@ -9,7 +9,7 @@ const Nav = () => {
           <Linkedin className="h-8 w-8" />
           <Plus />
           <ChatGPT className="-m-2 h-12 w-12 fill-[#518275]" />
-          <span className="font-display ml-3 text-2xl">LinkedinGPT</span>
+          <span className="font-display ml-2 text-2xl">LinkedinGPT</span>
         </div>
         <div>
           <Github className="h-8 w-8" />
