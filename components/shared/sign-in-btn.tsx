@@ -8,17 +8,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus } from "lucide-react";
+import { LogIn, Plus } from "lucide-react";
 
 const SignInBtn = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="px-6" size={"sm"}>
-          Sign in
+        <Button className="md:rounded-full md:px-6" size={"sm"}>
+          <span className="hidden md:block">Sign in</span>
+          <LogIn className="block h-4 w-4 md:hidden" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="overflow-x-hidden p-10">
+      <DialogContent className="max-w-xs overflow-x-hidden p-10 sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="flex flex-col items-center justify-center pb-4 text-center text-2xl font-bold">
             <div className="flex items-center justify-center gap-1 pb-4">
