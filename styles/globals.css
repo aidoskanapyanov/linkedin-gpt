@@ -74,3 +74,48 @@
     @apply !min-w-full bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .gradient-border {
+    --borderWidth: 3px;
+    background: #fff;
+    position: relative;
+    border-radius: 12px;
+  }
+  .gradient-border:after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(
+      60deg,
+      #007ebb,
+      #0484b3,
+      #0889ab,
+      #0c8fa3,
+      #10949b,
+      #149a93,
+      #189f8b,
+      #1ca583
+    );
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
