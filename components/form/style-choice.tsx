@@ -6,7 +6,7 @@ const StyleChoice = () => {
       <div className="pb-4 text-center text-lg font-semibold sm:text-2xl">
         What style of writing do you want?
       </div>
-      <div className="mx-auto grid max-w-screen-lg grid-cols-1 gap-2 pt-4 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-screen-lg grid-cols-1 gap-2 p-4 pt-4 sm:grid-cols-3">
         <div className="h-16 cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
           Educational
         </div>

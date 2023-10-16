@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import TopicChoice from "@/components/form/topic-choice";
+import { cn } from "@/lib/utils";
 
 export const Form = () => {
   const [step, setStep] = React.useState(0);
@@ -35,11 +36,18 @@ export const Form = () => {
         </AnimatePresence>
       </div>
       <div className="mx-auto flex max-w-screen-lg items-center justify-between pt-6">
-        <Button className="rounded-full p-2" variant={"secondary"}>
+        <Button
+          className={cn(
+            "transform rounded-full p-2 transition-transform active:scale-75",
+            step === 0 ? "invisible" : "",
+          )}
+          variant={"secondary"}
+          onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
+        >
           <ChevronLeft />
         </Button>
         <Button
-          className="rounded-full p-2"
+          className="transform rounded-full p-2 transition-transform active:scale-75"
           variant={"secondary"}
           onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
         >
