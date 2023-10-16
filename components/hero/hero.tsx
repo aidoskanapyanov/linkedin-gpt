@@ -11,21 +11,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <motion.div
-      className="flex flex-col items-center justify-start pb-12"
-      initial="hidden"
-      whileInView="show"
-      animate="show"
-      viewport={{ once: true }}
-      variants={{
-        hidden: {},
-        show: {
-          transition: {
-            staggerChildren: 0.15,
-          },
-        },
-      }}
-    >
+    <div className="flex flex-col items-center justify-start pb-12">
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="pb-8">
         <IntroducingTag />
       </motion.div>
@@ -48,7 +34,7 @@ const Hero = () => {
           </Button>
         </Link>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
