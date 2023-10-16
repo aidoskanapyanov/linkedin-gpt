@@ -12,7 +12,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-start"
+      className="flex flex-col items-center justify-start pb-12"
       initial="hidden"
       whileInView="show"
       animate="show"
