@@ -6,7 +6,7 @@ const IntroducingTag = () => {
   return (
     <Button className="rounded-full bg-blue-100 px-6 text-blue-700 hover:bg-blue-200">
       <Linkedin className="mr-2 h-4 w-4" />
-      Introducing LinkedinGPT
+      Introducing LinkedInGPT
     </Button>
   );
 };
