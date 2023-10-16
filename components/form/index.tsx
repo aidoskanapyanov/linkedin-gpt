@@ -1,10 +1,10 @@
 import StyleChoice from "@/components/form/style-choice";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import TopicChoice from "@/components/form/topic-choice";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Wand2 } from "lucide-react";
+import React from "react";
 
 export const Form = () => {
   const [step, setStep] = React.useState(0);
@@ -47,11 +47,23 @@ export const Form = () => {
           <ChevronLeft />
         </Button>
         <Button
-          className="transform rounded-full p-2 transition-transform active:scale-75"
+          className={cn(
+            "transform rounded-full p-2 transition-transform active:scale-75",
+            step === 1 ? "invisible" : "",
+          )}
           variant={"secondary"}
           onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
         >
           <ChevronRight />
+        </Button>
+        <Button
+          className={cn(
+            "transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75",
+            step === 1 ? "block" : "hidden",
+          )}
+          variant={"secondary"}
+        >
+          <Wand2 className="fill-[#1CA583] text-white" />
         </Button>
       </div>
     </div>
