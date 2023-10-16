@@ -11,7 +11,7 @@ export const Form = () => {
 
   return (
     <div className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-7xl">
-      <div className="mx-auto h-64 max-w-screen-lg overflow-y-auto">
+      <div className="mx-auto h-80 max-w-screen-lg overflow-y-auto">
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
