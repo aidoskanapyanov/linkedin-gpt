@@ -16,8 +16,8 @@ const Footer = () => {
           </a>
         </p>
         <a
-          href="javascript:void(0);"
-          // target="_blank"
+          href="https://www.buymeacoffee.com/aidosk"
+          target="_blank"
           rel="noopener noreferrer"
           className="mx-auto mt-2 flex max-w-fit items-center justify-center space-x-2 rounded-lg border border-gray-200 bg-white px-6 py-2 transition-all duration-75 hover:scale-105"
         >
