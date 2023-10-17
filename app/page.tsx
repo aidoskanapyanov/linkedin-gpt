@@ -1,5 +1,6 @@
 "use client";
 
+import Feedback from "@/components/feedback";
 import { Form } from "@/components/form";
 import Hero from "@/components/hero/hero";
 import Posts from "@/components/posts";
@@ -29,6 +30,9 @@ export default function Home() {
       </motion.div>
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
         <Posts />
+      </motion.div>
+      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
+        <Feedback />
       </motion.div>
     </motion.div>
   );
