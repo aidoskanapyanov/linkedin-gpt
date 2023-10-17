@@ -34,11 +34,11 @@ const TopicChoice = () => {
   }, []);
 
   return (
-    <div>
-      <div className="pb-4 text-center text-lg font-semibold sm:text-2xl">
+    <div className="flex h-full flex-col items-stretch justify-start">
+      <div className="flex-none pb-4 text-center text-lg font-semibold sm:text-2xl">
         What are you writing about?
       </div>
-      <div className="mx-auto h-48 max-w-screen-md p-4">
+      <div className="mx-auto w-full max-w-screen-md grow p-4">
         <Textarea className="h-full p-8 text-lg" ref={el} />
       </div>
     </div>
