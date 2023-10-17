@@ -41,6 +41,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-scroll-into-view:
+    specifier: ^2.0.2
+    version: 2.0.2(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -2844,6 +2847,16 @@ packages:
       tslib: 2.6.2
       use-callback-ref: 1.3.0(@types/react@18.2.28)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.28)(react@18.2.0)
+    dev: false
+
+  /react-scroll-into-view@2.0.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1928S0lmz68F08Rmh8gIKFKpUCZAmJT0U7cKFT8vuAKpF1GjBgdkjcsxe8DYlHRfxfQu//w5AYlj1jTPFHoh+g==}
+    peerDependencies:
+      react: '>=16.5.2'
+      react-dom: '>=16.5.2'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.2.28)(react@18.2.0):

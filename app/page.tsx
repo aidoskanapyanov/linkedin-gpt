@@ -2,13 +2,14 @@
 
 import { Form } from "@/components/form";
 import Hero from "@/components/hero/hero";
+import Posts from "@/components/posts";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <motion.div
-      className="min-h-screen py-32"
+      className="min-h-screen pt-32"
       initial="hidden"
       whileInView="show"
       animate="show"
@@ -25,6 +26,9 @@ export default function Home() {
       <Hero />
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
         <Form />
+      </motion.div>
+      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
+        <Posts />
       </motion.div>
     </motion.div>
   );

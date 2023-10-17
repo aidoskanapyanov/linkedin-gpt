@@ -10,11 +10,12 @@ export const Form = () => {
   const [step, setStep] = React.useState(0);
 
   return (
-    <div className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-7xl">
-      <div className="mx-auto h-[480px] max-w-screen-lg overflow-y-auto sm:h-64">
+    <div className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-5xl">
+      <div className="mx-auto h-[480px] max-w-screen-lg overflow-y-auto sm:h-72">
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
+              className="flex h-full flex-col items-stretch justify-start"
               key={step}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

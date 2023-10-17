@@ -21,7 +21,7 @@ const Hero = () => {
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
         <Subtitle />
       </motion.div>
-      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
+      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} id="form">
         <Link
           href={"https://github.com/aidoskanapyanov/linkedin-gpt"}
           target="_blank"

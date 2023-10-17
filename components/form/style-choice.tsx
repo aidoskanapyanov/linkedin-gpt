@@ -2,11 +2,11 @@ import React from "react";
 
 const StyleChoice = () => {
   return (
-    <div>
-      <div className="pb-4 text-center text-lg font-semibold sm:text-2xl">
+    <>
+      <div className="flex-none pb-4 text-center text-lg font-semibold sm:text-2xl">
         What style of writing do you want?
       </div>
-      <div className="mx-auto grid max-w-screen-lg grid-cols-2 grid-rows-3 gap-2 p-4 pt-4 sm:grid-cols-3 sm:grid-rows-none">
+      <div className="mx-auto grid max-w-screen-lg grow grid-cols-2 grid-rows-3 gap-2 p-4 pt-4 sm:grid-cols-3 sm:grid-rows-2">
         <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
           <div className="font-semibold">Educational</div>
           <div className="text-sm text-gray-500">
@@ -44,7 +44,7 @@ const StyleChoice = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
