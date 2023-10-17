@@ -6,6 +6,7 @@ import cx from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { Providers } from "@/app/provider";
 
 const clash = localFont({
   src: "../styles/ClashDisplay-Semibold.otf",
@@ -38,9 +39,11 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Nav />
-            <BackgroundGradient />
-            {children}
+            <Providers>
+              <Nav />
+              <BackgroundGradient />
+              {children}
+            </Providers>
           </ThemeProvider>
         </body>
       </html>
