@@ -35,7 +35,11 @@ const SignInBtn = () => {
           </DialogDescription>
         </DialogHeader>
         <div className="-mx-10 -mb-10 flex h-40 flex-col items-center justify-center border-t bg-gray-50">
-          <Button variant={"outline"} className="font-normal">
+          <Button
+            variant={"outline"}
+            className="font-normal"
+            onClick={() => signIn("linkedin", { redirect: false })}
+          >
             <Linkedin className="mr-2 h-4 w-4" /> Sign in with LinkedIn
           </Button>
           <Button
