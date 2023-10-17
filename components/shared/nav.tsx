@@ -2,12 +2,16 @@
 
 import { ChatGPT, Linkedin } from "@/components/shared/icons";
 import SignInBtn from "@/components/shared/sign-in-btn";
+import UserBtn from "@/components/shared/user-btn";
 import useScroll from "@/lib/hooks/use-scroll";
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const Nav = () => {
   const scrolled = useScroll(50);
+  const { data: session, status } = useSession();
+
   return (
     <div
       className={cn(
@@ -25,7 +29,11 @@ const Nav = () => {
           <span className="ml-2 font-display text-2xl">LinkedInGPT</span>
         </div>
         <div>
-          <SignInBtn />
+          {status === "authenticated" ? (
+            <UserBtn user={session.user} />
+          ) : (
+            <SignInBtn />
+          )}
         </div>
       </div>
     </div>

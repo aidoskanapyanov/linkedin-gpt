@@ -1,4 +1,4 @@
-import { ChatGPT, Linkedin } from "@/components/shared/icons";
+import { ChatGPT, Github, Linkedin } from "@/components/shared/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { LogIn, Plus } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 const SignInBtn = () => {
   return (
@@ -33,9 +34,16 @@ const SignInBtn = () => {
             Sign in via your LinkedIn account to get started.
           </DialogDescription>
         </DialogHeader>
-        <div className="-mx-10 -mb-10 flex h-24 flex-col items-center justify-center border-t bg-gray-50">
+        <div className="-mx-10 -mb-10 flex h-40 flex-col items-center justify-center border-t bg-gray-50">
           <Button variant={"outline"} className="font-normal">
             <Linkedin className="mr-2 h-4 w-4" /> Sign in with LinkedIn
+          </Button>
+          <Button
+            variant={"outline"}
+            className="mt-2 font-normal"
+            onClick={() => signIn("github", { redirect: false })}
+          >
+            <Github className="mr-2 h-4 w-4" /> Sign in with Github
           </Button>
         </div>
       </DialogContent>
