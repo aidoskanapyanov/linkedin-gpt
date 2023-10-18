@@ -77,6 +77,7 @@ export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
         {step === 1 && (
           <ScrollIntoView selector="#post">
             <Button
+              id="post"
               className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75"
               variant={"secondary"}
               type="submit"
