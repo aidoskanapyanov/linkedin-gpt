@@ -5,7 +5,12 @@ import { useEffect, useRef } from "react";
 // @ts-ignore
 import Typed from "typed.js";
 
-const TopicChoice = () => {
+interface Props {
+  input: string;
+  handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+}
+
+const TopicChoice = ({ input, handleInputChange }: Props) => {
   const el = useRef(null);
 
   useEffect(() => {
@@ -39,7 +44,12 @@ const TopicChoice = () => {
         What are you writing about?
       </div>
       <div className="mx-auto max-h-80 w-full max-w-screen-md grow p-4">
-        <Textarea className="h-full p-8 text-lg" ref={el} />
+        <Textarea
+          className="h-full p-8 text-lg"
+          ref={el}
+          value={input}
+          onChange={handleInputChange}
+        />
       </div>
     </div>
   );

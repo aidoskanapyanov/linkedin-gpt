@@ -7,12 +7,22 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { ChevronLeft, ChevronRight, Wand2 } from "lucide-react";
 import React from "react";
+import ScrollIntoView from "react-scroll-into-view";
 
-export const Form = () => {
+interface FormProps {
+  input: string;
+  handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
   const [step, setStep] = useAtom(stepAtom);
 
   return (
-    <div className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-5xl">
+    <form
+      className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-5xl"
+      onSubmit={handleSubmit}
+    >
       <div className="mx-auto h-[480px] max-w-screen-lg overflow-y-auto sm:h-72">
         <AnimatePresence mode="wait">
           {step === 0 && (
@@ -34,7 +44,10 @@ export const Form = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <TopicChoice />
+              <TopicChoice
+                input={input}
+                handleInputChange={handleInputChange}
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -60,14 +73,17 @@ export const Form = () => {
           </Button>
         )}
         {step === 1 && (
-          <Button
-            className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75"
-            variant={"secondary"}
-          >
-            <Wand2 className="fill-[#1CA583] text-white" />
-          </Button>
+          <ScrollIntoView selector="#post">
+            <Button
+              className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75"
+              variant={"secondary"}
+              type="submit"
+            >
+              <Wand2 className="fill-[#1CA583] text-white" />
+            </Button>
+          </ScrollIntoView>
         )}
       </div>
-    </div>
+    </form>
   );
 };
