@@ -2,12 +2,14 @@ import StyleChoice from "@/components/form/style-choice";
 import TopicChoice from "@/components/form/topic-choice";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { stepAtom } from "@/store";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAtom } from "jotai";
 import { ChevronLeft, ChevronRight, Wand2 } from "lucide-react";
 import React from "react";
 
 export const Form = () => {
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = useAtom(stepAtom);
 
   return (
     <div className="sm:gradient-border mx-auto max-w-2xl border bg-background p-4 py-12 md:max-w-4xl lg:max-w-5xl">

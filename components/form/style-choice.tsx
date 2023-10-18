@@ -1,4 +1,63 @@
-import React from "react";
+import { cn } from "@/lib/utils";
+import { stepAtom, styleAtom } from "@/store";
+import { useAtom } from "jotai";
+
+const stylesList = [
+  {
+    name: "Educational",
+    description: "Informative and knowledge-focused.",
+  },
+  {
+    name: "Concrete",
+    description: "Clear and specific with real examples.",
+  },
+  {
+    name: "Formal",
+    description: "Traditional, professional, and structured.",
+  },
+  {
+    name: "Fun",
+    description: "Lively, engaging, and enjoyable.",
+  },
+  {
+    name: "Modern",
+    description: "Contemporary and up-to-date.",
+  },
+  {
+    name: "Playful",
+    description: "Interactive and enjoyable.",
+  },
+];
+
+const Styles = () => {
+  const [style, setStyle] = useAtom(styleAtom);
+  const setStep = useAtom(stepAtom)[1];
+
+  return (
+    <>
+      {stylesList.map((_style, index) => (
+        <div
+          key={index}
+          className={cn(
+            "cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300",
+            style === _style.name.toLowerCase()
+              ? "ring-2 ring-emerald-500 hover:ring-emerald-500"
+              : "",
+          )}
+          onClick={() => {
+            setStyle(_style.name.toLowerCase());
+            style != _style.name.toLowerCase()
+              ? setStep((prev) => (prev === 0 ? 1 : 0))
+              : null;
+          }}
+        >
+          <div className="font-semibold">{_style.name}</div>
+          <div className="text-sm text-gray-500">{_style.description}</div>
+        </div>
+      ))}
+    </>
+  );
+};
 
 const StyleChoice = () => {
   return (
@@ -7,42 +66,7 @@ const StyleChoice = () => {
         What style of writing do you want?
       </div>
       <div className="mx-auto grid max-w-screen-lg grow grid-cols-2 grid-rows-3 gap-2 p-4 pt-4 sm:grid-cols-3 sm:grid-rows-2">
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Educational</div>
-          <div className="text-sm text-gray-500">
-            Informative and knowledge-focused.
-          </div>
-        </div>
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Concrete</div>
-          <div className="text-sm text-gray-500">
-            Clear and specific with real examples.
-          </div>
-        </div>
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Formal</div>
-          <div className="text-sm text-gray-500">
-            Traditional, professional, and structured.
-          </div>
-        </div>
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Fun</div>
-          <div className="text-sm text-gray-500">
-            Lively, engaging, and enjoyable.
-          </div>
-        </div>
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Modern</div>
-          <div className="text-sm text-gray-500">
-            Contemporary and up-to-date.
-          </div>
-        </div>
-        <div className="cursor-pointer rounded-lg border p-4 transition-all hover:ring-2 hover:ring-gray-300">
-          <div className="font-semibold">Playful</div>
-          <div className="text-sm text-gray-500">
-            Interactive and enjoyable.
-          </div>
-        </div>
+        <Styles />
       </div>
     </>
   );
