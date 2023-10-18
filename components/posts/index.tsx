@@ -41,11 +41,13 @@ const Posts = ({ completion, isLoading }: Props) => {
             <CopyToClipboard
               text={completion}
               onCopy={() => {
-                setCopied(true);
-                toast({
-                  title: "Post copied to clipboard!",
-                  description: "You can now paste it anywhere you want.",
-                });
+                if (!isLoading) {
+                  setCopied(true);
+                  toast({
+                    title: "Post copied to clipboard!",
+                    description: "You can now paste it anywhere you want.",
+                  });
+                }
               }}
             >
               <div className="relative mx-auto my-6 min-h-[500px] w-full max-w-screen-md cursor-pointer whitespace-pre-wrap rounded-lg border bg-white p-10 py-12 text-sm lg:text-base">
