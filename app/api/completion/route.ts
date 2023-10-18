@@ -16,15 +16,11 @@ interface StyleMap {
 }
 
 export async function POST(req: Request) {
-  if (
-    process.env.NODE_ENV !== "development" &&
-    process.env.KV_REST_API_URL &&
-    process.env.KV_REST_API_TOKEN
-  ) {
+  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
     const ip = req.headers.get("x-forwarded-for");
     const ratelimit = new Ratelimit({
       redis: kv,
-      limiter: Ratelimit.slidingWindow(5, "24h"),
+      limiter: Ratelimit.slidingWindow(1, "1 d"),
     });
 
     const { success, limit, reset, remaining } = await ratelimit.limit(
