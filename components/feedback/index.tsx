@@ -21,24 +21,24 @@ const FeedbackCard = ({
           <img
             src={imageUrl}
             alt="profile-pic"
-            className="h-12 w-12 flex-none rounded-full object-contain"
+            className="h-8 w-8 flex-none rounded-full object-contain"
           />
         ) : (
-          <div className="h-12 w-12 flex-none rounded-full bg-gray-200" />
+          <div className="h-8 w-8 flex-none rounded-full bg-gray-200" />
         )}
-        <div className="flex flex-col items-start justify-center text-sm">
+        <div className="flex flex-col items-start justify-center text-xs">
           <p className="font-semibold">{name}</p>
           <p className="text-gray-600">{username}</p>
         </div>
       </div>
-      <div>{comment}</div>
+      <div className="text-sm">{comment}</div>
     </div>
   );
 };
 
 const Feedback = () => {
   return (
-    <div className="min-h-[calc(100vh-68px)] border-t border-gray-200 bg-blue-50/50 p-4 py-20 backdrop-blur-xl">
+    <div className="min-h-[calc(100vh-68px)] border-t border-gray-200 bg-blue-50/50 p-4 px-4 py-20 backdrop-blur-xl">
       <h2 className="pb-6 text-center font-display text-2xl font-bold tracking-[-0.02em] drop-shadow-sm sm:text-4xl">
         Over{" "}
         <span className="bg-gradient-to-r from-[#007EBB] to-[#1CA583] bg-clip-text text-transparent">

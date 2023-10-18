@@ -54,6 +54,7 @@ export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
       </div>
       <div className="mx-auto flex max-w-screen-lg items-center justify-between pt-6">
         <Button
+          type="button"
           className={cn(
             "transform rounded-full p-2 transition-transform active:scale-75",
             step === 0 ? "invisible" : "",
@@ -65,6 +66,7 @@ export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
         </Button>
         {step === 0 && (
           <Button
+            type="button"
             className="transform rounded-full p-2 transition-transform active:scale-75"
             variant={"secondary"}
             onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}

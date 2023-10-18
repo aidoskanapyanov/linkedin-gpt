@@ -13,9 +13,10 @@ import { useCompletion } from "ai/react";
 
 export default function Home() {
   const style = useAtom(styleAtom)[0];
-  const { completion, input, handleInputChange, handleSubmit } = useCompletion({
-    body: { style },
-  });
+  const { completion, input, handleInputChange, handleSubmit, isLoading } =
+    useCompletion({
+      body: { style },
+    });
 
   return (
     <motion.div
@@ -42,7 +43,7 @@ export default function Home() {
         />
       </motion.div>
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
-        <Posts completion={completion} />
+        <Posts completion={completion} isLoading={isLoading} />
       </motion.div>
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
         <Feedback />
