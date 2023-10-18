@@ -9,26 +9,25 @@ const openai = new OpenAI({
 // Set the runtime to edge for best performance
 export const runtime = "edge";
 
+interface StyleMap {
+  [key: string]: string;
+}
+
 export async function POST(req: Request) {
-  const { prompt } = await req.json();
+  const { prompt, style } = await req.json();
 
-  let style = "educational (Informative and knowledge-focused)";
+  const styleMap: StyleMap = {
+    educational: "educational (Informative and knowledge-focused)",
+    concrete: "concrete (Clear and specific with real examples)",
+    formal: "formal (Traditional, professional, and structured)",
+    fun: "fun (Lively, engaging, and enjoyable)",
+    modern: "modern (Contemporary and up-to-date)",
+    playful: "playful (Interactive and enjoyable)",
+  };
 
-  if (prompt.style === "educational") {
-    style = "educational (Informative and knowledge-focused)";
-  } else if (prompt.style === "concrete") {
-    style = "concrete (Clear and specific with real examples)";
-  } else if (prompt.style === "formal") {
-    style = "formal (Traditional, professional, and structured)";
-  } else if (prompt.style === "fun") {
-    style = "fun (Lively, engaging, and enjoyable)";
-  } else if (prompt.style === "modern") {
-    style = "modern (Contemporary and up-to-date)";
-  } else if (prompt.style === "playful") {
-    style = "playful (Interactive and enjoyable)";
-  }
-
-  console.log(prompt.style, prompt.text);
+  const styleDescr = styleMap[style]
+    ? styleMap[style]
+    : styleMap["educational"];
 
   // Ask OpenAI for a streaming completion given the prompt
   const response = await openai.chat.completions.create({
@@ -36,9 +35,9 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "system",
-        content: `You are a Linkedin post writer. Reply with a very short linkedin post (150 words max). Write a post in the "${style}" style.`,
+        content: `You are a Linkedin post writer. Reply with a very short linkedin post (150 words max). Write a post in the "${styleDescr}" style.`,
       },
-      { role: "user", content: prompt.text },
+      { role: "user", content: prompt },
     ],
     stream: true,
     max_tokens: 500,
