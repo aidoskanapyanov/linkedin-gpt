@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Providers } from "@/app/provider";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 
 const clash = localFont({
   src: "../styles/ClashDisplay-Semibold.otf",
@@ -45,6 +46,7 @@ export default function RootLayout({
               <BackgroundGradient />
               <Toaster />
               {children}
+              <Analytics />
             </Providers>
           </ThemeProvider>
         </body>
