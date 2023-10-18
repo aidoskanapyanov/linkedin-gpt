@@ -1,3 +1,5 @@
+import { kv } from "@vercel/kv";
+import { Ratelimit } from "@upstash/ratelimit";
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 
@@ -14,6 +16,33 @@ interface StyleMap {
 }
 
 export async function POST(req: Request) {
+  if (
+    process.env.NODE_ENV !== "development" &&
+    process.env.KV_REST_API_URL &&
+    process.env.KV_REST_API_TOKEN
+  ) {
+    const ip = req.headers.get("x-forwarded-for");
+    const ratelimit = new Ratelimit({
+      redis: kv,
+      limiter: Ratelimit.slidingWindow(5, "24h"),
+    });
+
+    const { success, limit, reset, remaining } = await ratelimit.limit(
+      `ratelimit_${ip}`,
+    );
+
+    if (!success) {
+      return new Response("You have reached your request limit for the day.", {
+        status: 429,
+        headers: {
+          "X-RateLimit-Limit": limit.toString(),
+          "X-RateLimit-Remaining": remaining.toString(),
+          "X-RateLimit-Reset": reset.toString(),
+        },
+      });
+    }
+  }
+
   const { prompt, style } = await req.json();
 
   const styleMap: StyleMap = {
