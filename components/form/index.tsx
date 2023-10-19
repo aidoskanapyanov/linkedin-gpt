@@ -1,6 +1,7 @@
 import StyleChoice from "@/components/form/style-choice";
 import TopicChoice from "@/components/form/topic-choice";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import { stepAtom } from "@/store";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,10 +14,32 @@ interface FormProps {
   input: string;
   handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  isLoading: boolean;
 }
 
-export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
+const ConditionallyScroll = ({
+  isLoading,
+  input,
+  children,
+}: {
+  isLoading: boolean;
+  input: string;
+  children: React.ReactNode;
+}) => {
+  if (input.length > 0 && !isLoading) {
+    return <ScrollIntoView selector="#post">{children}</ScrollIntoView>;
+  }
+  return <>{children}</>;
+};
+
+export const Form = ({
+  input,
+  handleInputChange,
+  handleSubmit,
+  isLoading,
+}: FormProps) => {
   const [step, setStep] = useAtom(stepAtom);
+  const { toast } = useToast();
 
   return (
     <form
@@ -75,16 +98,25 @@ export const Form = ({ input, handleInputChange, handleSubmit }: FormProps) => {
           </Button>
         )}
         {step === 1 && (
-          <ScrollIntoView selector="#post">
+          <ConditionallyScroll isLoading={isLoading} input={input}>
             <Button
               id="post"
               className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75"
               variant={"secondary"}
               type="submit"
+              disabled={isLoading}
+              onClick={() => {
+                if (input.length === 0) {
+                  toast({
+                    title: "Please enter a topic.",
+                    description: "We need something to write about :)",
+                  });
+                }
+              }}
             >
               <Wand2 className="fill-[#1CA583] text-white" />
             </Button>
-          </ScrollIntoView>
+          </ConditionallyScroll>
         )}
       </div>
     </form>

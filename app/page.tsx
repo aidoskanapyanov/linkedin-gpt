@@ -48,6 +48,7 @@ export default function Home() {
           input={input}
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
+          isLoading={isLoading}
         />
       </motion.div>
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>

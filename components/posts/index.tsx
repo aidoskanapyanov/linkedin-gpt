@@ -50,7 +50,7 @@ const Posts = ({ completion, isLoading }: Props) => {
                 }
               }}
             >
-              <div className="relative mx-auto my-6 min-h-[500px] w-full max-w-screen-md cursor-pointer whitespace-pre-wrap rounded-lg border bg-white p-10 py-12 text-sm lg:text-base">
+              <div className="relative mx-auto my-6 min-h-[500px] w-full max-w-screen-md cursor-pointer whitespace-pre-wrap rounded-lg border bg-white p-10 py-12 pb-16 text-sm lg:text-base">
                 {completion}
                 <Badge
                   variant="outline"
