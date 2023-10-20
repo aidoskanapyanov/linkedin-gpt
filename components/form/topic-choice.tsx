@@ -49,6 +49,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
           ref={el}
           value={input}
           onChange={handleInputChange}
+          maxLength={200}
         />
       </div>
     </div>
