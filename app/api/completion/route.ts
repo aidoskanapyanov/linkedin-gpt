@@ -62,7 +62,7 @@ export async function POST(req: Request) {
         role: "system",
         content: `You are a Linkedin post writer. Reply with a very short linkedin post (150 words max). Write a post in the "${styleDescr}" style.`,
       },
-      { role: "user", content: prompt },
+      { role: "user", content: prompt.substring(0, 200) },
     ],
     stream: true,
     max_tokens: 500,
