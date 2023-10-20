@@ -1,6 +1,12 @@
 import StyleChoice from "@/components/form/style-choice";
 import TopicChoice from "@/components/form/topic-choice";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import { stepAtom } from "@/store";
@@ -16,6 +22,25 @@ interface FormProps {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
 }
+
+const ButtonTooltip = ({
+  children,
+  text,
+}: {
+  children: React.ReactNode;
+  text: string;
+}) => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent>
+          <p>{text}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 const ConditionallyScroll = ({
   isLoading,
@@ -76,46 +101,52 @@ export const Form = ({
         </AnimatePresence>
       </div>
       <div className="mx-auto flex max-w-screen-lg items-center justify-between pt-6">
-        <Button
-          type="button"
-          className={cn(
-            "transform rounded-full p-2 transition-transform active:scale-75",
-            step === 0 ? "invisible" : "",
-          )}
-          variant={"secondary"}
-          onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
-        >
-          <ChevronLeft />
-        </Button>
-        {step === 0 && (
+        <ButtonTooltip text="Previous">
           <Button
             type="button"
-            className="transform rounded-full p-2 transition-transform active:scale-75"
+            className={cn(
+              "transform rounded-full p-2 brightness-[.97] transition-transform active:scale-75",
+              step === 0 ? "invisible" : "",
+            )}
             variant={"secondary"}
             onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
           >
-            <ChevronRight />
+            <ChevronLeft />
           </Button>
+        </ButtonTooltip>
+        {step === 0 && (
+          <ButtonTooltip text="Next">
+            <Button
+              type="button"
+              className="transform rounded-full p-2 brightness-[.97] transition-transform active:scale-75"
+              variant={"secondary"}
+              onClick={() => setStep((prev) => (prev === 0 ? 1 : 0))}
+            >
+              <ChevronRight />
+            </Button>
+          </ButtonTooltip>
         )}
         {step === 1 && (
           <ConditionallyScroll isLoading={isLoading} input={input}>
-            <Button
-              id="post"
-              className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform active:scale-75"
-              variant={"secondary"}
-              type="submit"
-              disabled={isLoading}
-              onClick={() => {
-                if (input.length === 0) {
-                  toast({
-                    title: "Please enter a topic.",
-                    description: "We need something to write about :)",
-                  });
-                }
-              }}
-            >
-              <Wand2 className="fill-[#1CA583] text-white" />
-            </Button>
+            <ButtonTooltip text="Generate post">
+              <Button
+                id="post"
+                className="transform rounded-full bg-gradient-to-br from-[#3398c9] to-[#49b79c] p-2 transition-transform hover:brightness-105 active:scale-75"
+                variant={"secondary"}
+                type="submit"
+                disabled={isLoading}
+                onClick={() => {
+                  if (input.length === 0) {
+                    toast({
+                      title: "Please enter a topic.",
+                      description: "We need something to write about :)",
+                    });
+                  }
+                }}
+              >
+                <Wand2 className="fill-[#1CA583] text-white" />
+              </Button>
+            </ButtonTooltip>
           </ConditionallyScroll>
         )}
       </div>
