@@ -1,4 +1,5 @@
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -51,6 +52,13 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
           onChange={handleInputChange}
           maxLength={200}
         />
+        <p
+          className={cn(
+            "absolute p-2 text-muted-foreground",
+            input.length > 0 ? "" : "hidden",
+            input.length === 200 ? "text-red-500" : "",
+          )}
+        >{`${input.length}/200`}</p>
       </div>
     </div>
   );
