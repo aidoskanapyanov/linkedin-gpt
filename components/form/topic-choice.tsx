@@ -16,7 +16,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
   const mandateKeyCodes = [8, 35, 36, 37, 38, 39, 40, 46];  // [backspace, end, home, arrow left, arrow up, arrow right, arrow down, delete]
 
   const checkMaxLength = (e: any) => {
-    if(e?.target?.value?.length >= e?.nativeEvent?.srcElement?.maxLength && (!mandateKeyCodes.includes(e?.keyCode))) {
+    if(e?.target?.value?.length >= 200 && (!mandateKeyCodes.includes(e?.keyCode))) {
       e.preventDefault();
     }
   };
