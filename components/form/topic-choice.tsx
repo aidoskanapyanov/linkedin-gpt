@@ -1,6 +1,6 @@
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -14,6 +14,12 @@ interface Props {
 const TopicChoice = ({ input, handleInputChange }: Props) => {
   const el = useRef(null);
 
+  const checkMaxLength = (e: FormEvent<HTMLTextAreaElement>) => {
+    if((e.target as HTMLTextAreaElement).value?.length >= 200) {
+      (e.target as HTMLTextAreaElement).value = (e.target as HTMLTextAreaElement).value.slice(0, 200);
+    }
+  };
+  
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: [
@@ -50,6 +56,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
           ref={el}
           value={input}
           onChange={handleInputChange}
+          onInput={(e) => checkMaxLength(e)}
           maxLength={200}
         />
         <p
