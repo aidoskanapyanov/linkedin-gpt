@@ -17,7 +17,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
 
   const checkMaxLength = (e: any) => {
     if(e?.target?.value?.length >= 200 && (!mandateKeyCodes.includes(e?.keyCode))) {
-      e.preventDefault();
+      e.target.value = e.target.value.slice(0, 200);
     }
   };
   
@@ -57,7 +57,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
           ref={el}
           value={input}
           onChange={handleInputChange}
-          onKeyDown={(e) => checkMaxLength(e)}
+          onInput={(e) => checkMaxLength(e)}
           maxLength={200}
         />
         <p
