@@ -13,7 +13,14 @@ interface Props {
 
 const TopicChoice = ({ input, handleInputChange }: Props) => {
   const el = useRef(null);
+  const mandateKeyCodes = [8, 35, 36, 37, 38, 39, 40, 46];  // [backspace, end, home, arrow left, arrow up, arrow right, arrow down, delete]
 
+  const checkMaxLength = (e: any) => {
+    if(e?.target?.value?.length >= e?.nativeEvent?.srcElement?.maxLength && (!mandateKeyCodes.includes(e?.keyCode))) {
+      e.preventDefault();
+    }
+  };
+  
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: [
@@ -50,6 +57,7 @@ const TopicChoice = ({ input, handleInputChange }: Props) => {
           ref={el}
           value={input}
           onChange={handleInputChange}
+          onKeyDown={(e) => checkMaxLength(e)}
           maxLength={200}
         />
         <p
