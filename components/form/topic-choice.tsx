@@ -1,6 +1,6 @@
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -13,11 +13,10 @@ interface Props {
 
 const TopicChoice = ({ input, handleInputChange }: Props) => {
   const el = useRef(null);
-  const mandateKeyCodes = [8, 35, 36, 37, 38, 39, 40, 46];  // [backspace, end, home, arrow left, arrow up, arrow right, arrow down, delete]
 
-  const checkMaxLength = (e: any) => {
-    if(e?.target?.value?.length >= 200 && (!mandateKeyCodes.includes(e?.keyCode))) {
-      e.target.value = e.target.value.slice(0, 200);
+  const checkMaxLength = (e: FormEvent<HTMLTextAreaElement>) => {
+    if((e.target as HTMLTextAreaElement).value?.length >= 200) {
+      (e.target as HTMLTextAreaElement).value = (e.target as HTMLTextAreaElement).value.slice(0, 200);
     }
   };
   
